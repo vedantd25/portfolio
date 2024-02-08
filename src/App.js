@@ -45,7 +45,7 @@ function App() {
         <Route
             index
             path="/"
-            element={<Home toggleIcon={toggleIcon} closeMenu={closeMenu} />}
+            element={<Home toggleIcon={toggleIcon}  />}
           />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />

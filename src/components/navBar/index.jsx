@@ -74,12 +74,12 @@ const Navbar = ({ handleToggleIcon }) => {
           className={`navbar__container__menu ${isMenuOpen ? "active" : ""}`}
           style={{ zIndex: openMenus }}
         >
-          <li className="navbar__container__menu__item navbar__container__menu__item__links" onClick={() => handleMenuItemClick("/home")}>Home</li>
-          <li className="navbar__container__menu__item navbar__container__menu__item__links"onClick={() => handleMenuItemClick("/about")}>About</li>
-          <li className="navbar__container__menu__item navbar__container__menu__item__links"onClick={() => handleMenuItemClick("/skills")}>Skills</li>
-          <li className="navbar__container__menu__item navbar__container__menu__item__links"onClick={() => handleMenuItemClick("/resume")}>Resume</li>
-          <li className="navbar__container__menu__item navbar__container__menu__item__links"onClick={() => handleMenuItemClick("/portfolio")}>Portfolio</li>
-          <li className="navbar__container__menu__item navbar__container__menu__item__links"onClick={() => handleMenuItemClick("/contact")}>Contact</li>
+          <li style={{cursor:'pointer'}} className="navbar__container__menu__item navbar__container__menu__item__links" onClick={() => handleMenuItemClick("/")}>Home</li>
+          <li style={{cursor:'pointer'}} className="navbar__container__menu__item navbar__container__menu__item__links"onClick={() => handleMenuItemClick("/about")}>About</li>
+          <li style={{cursor:'pointer'}} className="navbar__container__menu__item navbar__container__menu__item__links"onClick={() => handleMenuItemClick("/skills")}>Skills</li>
+          <li style={{cursor:'pointer'}} className="navbar__container__menu__item navbar__container__menu__item__links"onClick={() => handleMenuItemClick("/resume")}>Resume</li>
+          <li style={{cursor:'pointer'}} className="navbar__container__menu__item navbar__container__menu__item__links"onClick={() => handleMenuItemClick("/portfolio")}>Portfolio</li>
+          <li style={{cursor:'pointer'}} className="navbar__container__menu__item navbar__container__menu__item__links"onClick={() => handleMenuItemClick("/contact")}>Contact</li>
           
 
         </ul>
