@@ -30,12 +30,14 @@ const data = [
   },
 ];
 
-const Navbar = () => {
+const Navbar = ({ handleToggleIcon }) => {
   const [toggleIcon, setToggleIcon] = useState(false);
 
-  const handleToggleIcon = () => {
+  const handleToggle = () => {
     setToggleIcon(!toggleIcon);
+    handleToggleIcon(!toggleIcon); // Notify the parent component about the toggle
   };
+
   return (
     <div>
       <nav className="navbar">
@@ -58,7 +60,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        <div className="nav-icon" onClick={handleToggleIcon}>
+        <div className="nav-icon" onClick={handleToggle}>
           {toggleIcon ? <HiX size={30} /> : <FaBars size={30} />}
         </div>
       </nav>
