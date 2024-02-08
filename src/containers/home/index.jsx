@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { Animate } from "react-simple-animate";
 import "./styles.scss";
 
-const Home = ({ toggleIcon }) => {
+const Home = ({ toggleIcon, closeMenu }) => {
   const navigate = useNavigate();
 
   const handleNavigateToContactMePage = () => {
     navigate("/contact");
+    closeMenu(); // Close the menu after navigation
   };
 
   return (
@@ -22,7 +23,7 @@ const Home = ({ toggleIcon }) => {
             </h1>
           </div>
           <Animate
-            play={!toggleIcon} // Animate only if toggleIcon is false
+            play={!toggleIcon}
             duration={1.5}
             delay={1}
             fps={60}
@@ -45,3 +46,4 @@ const Home = ({ toggleIcon }) => {
 };
 
 export default Home;
+

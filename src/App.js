@@ -15,6 +15,10 @@ function App() {
   const location = useLocation();
   const [toggleIcon, setToggleIcon] = useState(false); // Add state for toggleIcon
 
+  const closeMenu = () => {
+    setToggleIcon(false); // Assuming you have a state to control the menu
+  };
+
   const handleInit = async (main) => {
     await loadFull(main);
   };
@@ -38,10 +42,10 @@ function App() {
       {/* main page content */}
       <div className="App__main-page-content">
         <Routes>
-          <Route
+        <Route
             index
             path="/"
-            element={<Home toggleIcon={toggleIcon} />}
+            element={<Home toggleIcon={toggleIcon} closeMenu={closeMenu} />}
           />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />

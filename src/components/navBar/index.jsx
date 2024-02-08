@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaBars, FaReact } from "react-icons/fa";
 import { HiX } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./styles.scss";
+
 const data = [
   {
     label: "HOME",
@@ -31,15 +32,37 @@ const data = [
 ];
 
 const Navbar = ({ handleToggleIcon }) => {
-  const [toggleIcon, setToggleIcon] = useState(false);
+  const [openMenus, setOpenMenus] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleToggle = () => {
-    setToggleIcon(!toggleIcon);
-    handleToggleIcon(!toggleIcon); // Notify the parent component about the toggle
+    setIsMenuOpen(!isMenuOpen);
+    handleToggleIcon(!isMenuOpen);
+    setOpenMenus(isMenuOpen ? openMenus - 1 : openMenus + 1);
+  };
+
+  const handleMenuItemClick = (to) => {
+    setIsMenuOpen(false);
+    navigate(to);
   };
 
   return (
-    <div>
+    <div style={{ position: "relative", zIndex: 1000 }}>
       <nav className="navbar">
         <div className="navbar__container">
           <Link to={"/"} className="navbar__container__logo">
@@ -47,21 +70,21 @@ const Navbar = ({ handleToggleIcon }) => {
           </Link>
         </div>
         <ul
-          className={`navbar__container__menu ${toggleIcon ? "active" : ""} `}
+          ref={menuRef}
+          className={`navbar__container__menu ${isMenuOpen ? "active" : ""}`}
+          style={{ zIndex: openMenus }}
         >
-          {data.map((item, key) => (
-            <li key={key} className="navbar__container__menu__item">
-              <Link
-                className="navbar__container__menu__item__links"
-                to={item.to}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
+          <li className="navbar__container__menu__item navbar__container__menu__item__links" onClick={() => handleMenuItemClick("/home")}>Home</li>
+          <li className="navbar__container__menu__item navbar__container__menu__item__links"onClick={() => handleMenuItemClick("/about")}>About</li>
+          <li className="navbar__container__menu__item navbar__container__menu__item__links"onClick={() => handleMenuItemClick("/skills")}>Skills</li>
+          <li className="navbar__container__menu__item navbar__container__menu__item__links"onClick={() => handleMenuItemClick("/resume")}>Resume</li>
+          <li className="navbar__container__menu__item navbar__container__menu__item__links"onClick={() => handleMenuItemClick("/portfolio")}>Portfolio</li>
+          <li className="navbar__container__menu__item navbar__container__menu__item__links"onClick={() => handleMenuItemClick("/contact")}>Contact</li>
+          
+
         </ul>
         <div className="nav-icon" onClick={handleToggle}>
-          {toggleIcon ? <HiX size={30} /> : <FaBars size={30} />}
+          {isMenuOpen ? <HiX size={30} /> : <FaBars size={30} />}
         </div>
       </nav>
     </div>
@@ -69,3 +92,4 @@ const Navbar = ({ handleToggleIcon }) => {
 };
 
 export default Navbar;
+
