@@ -63,7 +63,7 @@ const Contact = () => {
           </a>
         </div>
 
-        <a href="https://www.linkedin.com/vedantd25" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/in/vedantd25/" target="_blank" rel="noopener noreferrer">
           <img src={Linkedin} alt="Linkedin" className="linkedin-image" />
         </a>
       </div>
