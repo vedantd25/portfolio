@@ -27,7 +27,7 @@ const Portfolio = () => {
     {
       id: 3,
       name: "Portfolio",
-      link: "",
+      link: "https://vedantd25.vercel.app",
       image: ImageOne,
     },
     {
