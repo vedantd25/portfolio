@@ -8,6 +8,7 @@
       margin: 0 auto;
       border-radius: 25px;
       border: 1px dashed var(--yellow-theme-main-color);
+      
 
       li {
         font-size: 16px;
@@ -24,7 +25,11 @@
           background: var(--yellow-theme-main-color);
           color: var(--yellow-theme-sub-text-color);
           font-weight: 600;
-          border-radius: 25px;
+          border-radius: 22px;
+          padding: 11.5px;
+          margin: 2px;
+          margin-bottom: 0px;
+           
         }
       }
     }
