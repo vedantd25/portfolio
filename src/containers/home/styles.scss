@@ -2,21 +2,21 @@
   position: relative;
   height: 100%;
   display: flex;
-  justify-content: center;
-  align-content: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding-top: 200px;
 
   &__text-wrapper {
     display: flex;
     flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    margin-left: 400px;
+    align-items: center;
+    text-align: center;
+    margin: 0 20px;
 
     h1 {
       color: var(--yellow-theme-main-color);
-      margin: 0px;
+      margin: 0;
       font-weight: 500;
       font-size: 8rem;
       line-height: 10rem;
@@ -26,14 +26,15 @@
       animation: typingEffectAnimation 2.5s steps(20, end);
     }
   }
-  &__contact-me{
+
+  &__contact-me {
     display: flex;
     justify-content: center;
     margin-top: 15px;
 
-    button{
+    button {
       cursor: pointer;
-      padding: 10px 70px;
+      padding: 10px 30px;
       font-size: 2rem;
       background: transparent;
       color: var(--yellow-theme-main-color);
@@ -41,49 +42,53 @@
       border-radius: 4px;
       font-weight: 500;
 
-      &:hover{
+      &:hover {
         background: var(--yellow-theme-main-color);
         color: #000000;
       }
     }
   }
-}
 
+  /* Media queries for responsiveness */
+  @media only screen and (max-width: 550px) {
+    .home__text-wrapper h1 {
+      font-size: 3rem;
+      line-height: 4.5rem;
+    }
 
-
-@media only screen and (max-width: 550px) {
-  
-  .home__text-wrapper h1 {
-    font-size: 3rem;
-    line-height: 4.5rem; 
+    .home__text-wrapper {
+      margin-left: 0;
+      text-align: center;
+    }
   }
 
-  .home__text-wrapper {
-    margin-left: 0; 
-    text-align: center; 
-  }
-}
-
-@media only screen and (min-width: 551px) and (max-width: 768px) {
-  .home__text-wrapper h1 {
-    font-size: 4rem;
-    line-height: 6rem;
-  }
-}
-
-@media only screen and (min-width: 769px) and (max-width: 990px) {
-  .home__text-wrapper h1 {
-    font-size: 6rem;
-    line-height: 8rem;
-  }
-}
-
-@keyframes typingEffectAnimation {
-  from {
-    width: 0;
+  @media only screen and (min-width: 551px) and (max-width: 768px) {
+    .home__text-wrapper h1 {
+      font-size: 4rem;
+      line-height: 6rem;
+    }
   }
 
-  to {
-    width: 100%;
+  @media only screen and (min-width: 769px) and (max-width: 990px) {
+    .home__text-wrapper h1 {
+      font-size: 6rem;
+      line-height: 8rem;
+    }
+  }
+
+  /* Ensure visibility even when the 3-line menu is active */
+  &.menu-active {
+    .home__text-wrapper {
+      display: flex;
+    }
+  }
+
+  @keyframes typingEffectAnimation {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
   }
 }
